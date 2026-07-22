@@ -58,6 +58,7 @@ void displayFarmers();
 
 
 // Main Program
+   float payment[SIZE]={0};
 
 int main () {
 
@@ -72,6 +73,9 @@ int main () {
 
         printf("\n===== FARMERS PRODUCE MANAGEMENT SYSTEM =====\n");
         printf("\n1.Display Farmer Records\n");
+        printf("\n2.Calculate Payments\n");
+        printf("\n3.Calculate Total Payment\n");
+        
         printf("\n5.Exit\n");
 
 
@@ -109,6 +113,7 @@ int main () {
 
 
       //DECIDING WHICH OPTION TO RUN BASED ON USERS CHOICE
+          
 
         switch(choice) {
             case 1:
@@ -116,6 +121,46 @@ int main () {
                 Sleep(900);
                 displayFarmers();
                 break;
+
+            case 2:
+    printf("\nCalculating Payments...\n");
+    Sleep(900);
+
+    for (int i = 0; i < SIZE; i++)
+    {
+        
+
+        payment[i] = quantities[i] * pricesPerUnit[i];
+
+        printf("After calculation\n");
+
+        printf("Farmer Name : %s\n", farmerNames[i]);
+
+        printf("Payment : KES %.2f\n", payment[i]);
+
+        printf("Reached separator\n");
+        printf("-----------------------------\n");
+    }
+                break;
+
+            case 3:
+{
+    float totalPayment = 0;
+
+    printf("\nCalculating Total Payment...\n");
+    Sleep(900);
+
+    for(int i = 0; i < SIZE; i++)
+    {
+        totalPayment += payment[i];
+    }
+
+    printf("\n=================================\n");
+    printf("Total Amount Payable: KES %.2f\n", totalPayment);
+    printf("=================================\n");
+
+    break;
+}
 
             case 5:
                  isTrue = false;
@@ -149,7 +194,7 @@ void displayFarmers(){
         printf("Farmer Name   : %s\n", farmerNames[i]);
         printf("Produce Type  : %s\n", produceTypes[i]);
         printf("Quantity      : %d\n", quantities[i]);
-        printf("Price/Unit    : %d\n", pricesPerUnit[i]);
+        printf("Price/Unit    : %.2f\n", pricesPerUnit[i]);
         printf("Payment Status: %s\n", paymentStatus[i]);
         printf("--------------------------------\n");
 
