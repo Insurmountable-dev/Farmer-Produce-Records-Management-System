@@ -75,7 +75,7 @@ int main () {
         printf("\n1.Display Farmer Records\n");
         printf("\n2.Calculate Payments\n");
         printf("\n3.Calculate Total Payment\n");
-        
+        printf("\n4.Display pending Payments\n");
         printf("\n5.Exit\n");
 
 
@@ -161,6 +161,30 @@ int main () {
 
     break;
 }
+
+// SELECT * FROM ProduceDeliveries
+// WHERE PaymentStatus = 'Pending';
+            case 4:
+    printf("\nPending Payments\n");
+    Sleep(900);
+
+// Your loop that displays pending payments
+
+    for (int i = 0; i < SIZE; i++)
+    {
+        // Calculate payment in case option 2 hasn't been run
+        payment[i] = quantities[i] * pricesPerUnit[i];
+
+        if (strcmp(paymentStatus[i], "Pending") == 0)
+        {
+            printf("\nFarmer Number : %d\n", farmerNumbers[i]);
+            printf("Farmer Name   : %s\n", farmerNames[i]);
+            printf("Amount Payable: KES %.2f\n", payment[i]);
+            printf("Status        : %s\n", paymentStatus[i]);
+            printf("---------------------------------\n");
+        }
+    }
+    break;
 
             case 5:
                  isTrue = false;
